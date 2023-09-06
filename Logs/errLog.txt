@@ -1,0 +1,21 @@
+2023/08/16	01/26/14	5936b096-d2db-43f9-b37e-8663dd714bdd	Error:Not allowed by CORS
+2023/08/16	01/26/37	2d1dc621-c284-4328-b511-9c5fe1100520	Error:Not allowed by CORS
+2023/08/16	01/28/35	4d54a33d-1334-46af-8f47-48d91b714c1b	Error:Not allowed by CORS
+2023/08/16	01/41/45	a8c7b278-f841-401e-97d0-b277ab536113	Error:Not allowed by CORS
+2023/08/16	01/42/04	712cbc47-27ec-4c0d-bf77-80176a47ca56	Error:Not allowed by CORS
+2023/08/16	01/42/04	5278817d-737a-465b-a6c6-cdd1ac9cc80f	Error:Not allowed by CORS
+2023/08/16	01/42/24	883e8d1b-ddcb-4c38-ba5c-17870aee881d	Error:Not allowed by CORS
+2023/08/16	01/42/24	0fea86c5-a777-4864-8ca0-1c0d5b5d2d3a	Error:Not allowed by CORS
+2023/08/29	03/20/05	9c3909d5-c064-499b-ac12-c4b23f9bf172	TypeError:Cannot read properties of undefined (reading 'id')
+2023/08/29	03/21/47	ebe5e164-3697-466a-b802-55ae0fc471a5	TypeError:Cannot read properties of undefined (reading 'id')
+2023/08/29	03/23/51	0a8aa4b6-5da7-4cf9-a56b-404d9c1999eb	TypeError:Cannot read properties of undefined (reading 'id')
+2023/08/29	03/24/13	bd97677e-105d-4938-81e7-00bff19370f6	TypeError:Cannot read properties of undefined (reading 'id')
+2023/09/05	15/34/28	29244e98-b44f-44ac-aa4a-ddd53bd00546	TypeError:Cannot read properties of undefined (reading 'indexOf')
+2023/09/05	16/21/12	5ba9c06c-32fd-4a73-a170-f7c4895cd4cc	SyntaxError:Unexpected token e in JSON at position 0
+2023/09/05	16/22/39	dd462314-fc9c-4d02-89e0-940280ec1d61	TypeError:authHeader?.startswith is not a function
+2023/09/05	16/27/14	71e47c9d-9c96-45f2-a389-6ac891abd288	TypeError:req.roles.map is not a function
+2023/09/05	16/30/32	83a16370-8720-4cad-ae0d-38e313ce5bd9	TypeError:req.roles.map is not a function
+2023/09/05	16/31/57	042e6b46-f897-41fd-98e4-3016f373448e	TypeError:req.roles.map is not a function
+2023/09/05	16/33/57	9c8d0473-3f58-42b0-9714-254838bce0e5	TypeError:req.roles.map is not a function
+2023/09/05	16/41/08	8dfa8625-9a2f-442d-9408-84bce3317936	TypeError:req.roles is not iterable
+2023/09/05	16/51/33	8eb95d1f-f6ed-4e81-972f-ac43c304d92c	TypeError:req.roles.map is not a function
