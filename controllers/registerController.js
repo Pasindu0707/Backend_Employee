@@ -1,10 +1,4 @@
-const UserDB={
-    users:require("../model/users.json"),
-    setUsers:function(data){this.users=data}
-}
-
-const fspromises=require('fs').promises
-const path=require('path')
+const User=require('../model/User')
 const bcrypt=require('bcrypt')
 
 const hadleNewUser=async(req,res)=>{
@@ -13,22 +7,21 @@ const hadleNewUser=async(req,res)=>{
         return res.status(400).json({"message":"User name and password required"})
     }
 
-    const duplicate =UserDB.users.find(person=>person.username===user)
+    const duplicate =await User.findOne({username:user}).exec()
     if(duplicate){
         return res.status(409)//conflict
     }
     try{
         const hashedPass=await bcrypt.hash(pwd,10)
 
-        const newUser={"username":user,
-                        "roles":{"User":2001},          //Always a normal user
-                        "password":hashedPass
-                    }
-        
-        UserDB.setUsers([...UserDB.users,newUser])
-        
-        await fspromises.writeFile(path.join(__dirname,'..','model','users.json'),JSON.stringify(UserDB.users))
-        console.log(UserDB.users);
+        //Storing new user and create 
+        const result=await User.create({
+            "username":user,
+            //"roles":{"User":2001},          //Beacouse we have defined normal user as default 
+            "password":hashedPass
+        })
+        console.log(result)
+        res.status(201).json({"Success":`New user ${user} was created`})
     }catch(err){
         return res.status(500).json({"Message":err.message})
     }

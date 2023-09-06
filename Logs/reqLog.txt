@@ -231,3 +231,6 @@
 2023/09/05	17/11/35	3a9d92a7-f5e6-4dcb-917f-dfe779b3bf09	PUT	undefined	/employees
 2023/09/05	17/12/17	541e966b-a66f-4263-8b5b-91afa5b05033	POST	undefined	/auth
 2023/09/05	17/12/30	5085edb3-0929-4c2d-9a0f-cdcfd11fe332	PUT	undefined	/employees
+2023/09/07	00/44/00	d7727174-59c3-451f-b651-4dc44f917be3	POST	undefined	/register
+2023/09/07	00/44/20	905cdb45-7c15-4c45-96bf-f9b5b3249e12	POST	undefined	/register
+2023/09/07	00/44/35	bcbf6e3c-0ac1-4e53-9131-a8f1a6145ecb	POST	undefined	/register
