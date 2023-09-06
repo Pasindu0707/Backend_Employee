@@ -1,17 +1,13 @@
-const UserDB={
-    users: require("../model/users.json"),
-    setUsers:function (data){this.users=data}
-}
-
-const fspromises=require('fs').promises
-const path=require('path')
+const User=require("../model/User")
 
 const handleLogout=async(req,res)=>{
     const cookies=req.cookies
+
     if (!cookies?.jwt) return res.sendStatus(204)
+    
     const refreshToken=cookies.jwt
 
-    const foundUser=UserDB.users.find(person=>person.refreshToken===refreshToken)
+    const foundUser=await User.findOne({refreshToken}).exec()
 
     if(!foundUser){
         res.clearCookie('jwt',{httponly:true,sameSite:'None',secure:true,maxAge:24*60*60*1000})
@@ -20,15 +16,9 @@ const handleLogout=async(req,res)=>{
     }
     //deleting from DB
 
-    const otherUsers=UserDB.users.filter(person=>person.refreshToken!==foundUser.refreshToken)
-
-    const currentUser={...foundUser,refreshToken: '' }
-
-    UserDB.setUsers([...otherUsers,currentUser])
-    await fspromises.writeFile(
-        path.join(__dirname,'..','model','users.json'),
-        JSON.stringify(UserDB.users)
-    )
+    foundUser.refreshToken=' '
+    const result=await foundUser.save()
+    console.log(result) //to get the changes to console // remove when production
 
     res.clearCookie('jwt',{httponly:true,sameSite:'None',secure:true,maxAge:27*60*60*1000})
 
