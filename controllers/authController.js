@@ -1,13 +1,6 @@
-const UserDB={
-    users: require("../model/users.json"),
-    setUsers:function (data){this.users=data}
-}
-
+const User=require("../model/User")
 const jwt=require('jsonwebtoken')
-const fspromises=require('fs').promises
-const path=require('path')
 const bcrypt=require ('bcrypt')
-const jsonwebtoken = require("jsonwebtoken")
 
 const handleLogin=async(req,res)=>{
     const {user,pwd}=req.body
@@ -15,13 +8,12 @@ const handleLogin=async(req,res)=>{
         return res.status(400).json({"Message":"Username and passwrod required"})
     }
 
-    const foundUser=UserDB.users.find(person=>person.username===user)
-
+    const foundUser=await User.findOne({username:user}).exec()
     if (!foundUser){
         return res.status(401).json({"Message":"Unortherized"})
     }
 
-    const match=await bcrypt.compare(pwd,foundUser.Password)
+    const match=await bcrypt.compare(pwd,foundUser.password)
 
     if(match){
         const roles = Object.values(foundUser.roles);
@@ -43,14 +35,12 @@ const handleLogin=async(req,res)=>{
             {expiresIn:'1d'}
         )
 
-        const otherUsers=UserDB.users.filter(person=>person.username!==foundUser.username)
-        
-        const currentUser={...foundUser,refreshToken}
+        //saving refresh token with current user
+        foundUser.refreshToken=refreshToken
+        const result=await foundUser.save()
+        console.log(result) 
 
-        UserDB.setUsers([...otherUsers,currentUser])
-        await fspromises.writeFile(path.join(__dirname,'..','model','users.json'),JSON.stringify(UserDB.users))
-
-        res.cookie('jwt',refreshToken,{httpOnly:true,sameSite:'None',secure:true,maxAge:24*60*60*1000})
+        res.cookie('jwt',refreshToken,{httpOnly:true,sameSite:'None',maxAge:24*60*60*1000})  //secure:true
         res.json({accessToken})
     }
     else{
