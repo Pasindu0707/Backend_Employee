@@ -4,7 +4,6 @@ const UserDB={
 }
 
 const jwt=require('jsonwebtoken')
-require('dotenv').config()
 const fspromises=require('fs').promises
 const path=require('path')
 const bcrypt=require ('bcrypt')
