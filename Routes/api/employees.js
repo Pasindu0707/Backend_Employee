@@ -12,7 +12,7 @@ router.route('/')
 
     .put(verifyRoles(ROLES_LIST.Admin, ROLES_LIST.Editor),employeeController.updateEmployee)
 
-    .delete(verifyRoles(ROLES_LIST.Admin),employeeController.getAllEmployees);     //only admin can remmove an employee
+    .delete(verifyRoles(ROLES_LIST.Admin),employeeController.deleteEmployee);     //only admin can remmove an employee
 
 router.route('/:id')
     .get(employeeController.getEmployee)
